@@ -646,7 +646,8 @@ int getCost(int cardNumber)
 int Smithy(int handPos, struct gameState *state) {
 	//+3 Cards
 	int currentPlayer = whoseTurn(state);
-	for (int i = 0; i < 3; i++)
+        int i;
+	for (i = 0; i < 3; i++)
 	{
 		drawCard(currentPlayer, state);
 	}
