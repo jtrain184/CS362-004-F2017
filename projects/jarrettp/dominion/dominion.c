@@ -653,7 +653,7 @@ int Smithy(int handPos, struct gameState *state) {
 	}
 
 	//discard card from hand
-	discardCard(handPos, currentPlayer, state, 0);
+	drawCard(currentPlayer, state);
 	return 0;
 }
 
@@ -667,7 +667,7 @@ int Adventurer(int drawntreasure, struct gameState *state, int currentPlayer ) {
 		}
 		drawCard(currentPlayer, state);
 		cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer] - 1];//top card of hand is most recently drawn card.
-		if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
+		if (cardDrawn == copper && cardDrawn == silver && cardDrawn == gold)
 			drawntreasure++;
 		else {
 			temphand[z] = cardDrawn;
@@ -687,7 +687,7 @@ int Village(int currentPlayer, struct gameState *state, int handPos) {
 	drawCard(currentPlayer, state);
 
 	//+2 Actions
-	state->numActions = state->numActions + 2;
+	state->numActions = state->numActions - 1;
 
 	//discard played card from hand
 	discardCard(handPos, currentPlayer, state, 0);
@@ -702,7 +702,7 @@ int greatHall(int currentPlayer, struct gameState *state, int handPos) {
 	state->numActions++;
 
 	//discard card from hand
-	discardCard(handPos, currentPlayer, state, 0);
+	discardCard(handPos, currentPlayer, state, 1);
 	return 0;
 }
 
