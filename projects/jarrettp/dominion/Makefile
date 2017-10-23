@@ -31,9 +31,9 @@ runtests: testDrawCard
 
 unittestresults.out: cardtest4.c dominion.c
 	echo "Result for running BST tests:" > unittestresults.out
-	echo "cardtest4.c:" >> tests.out
+	echo "cardtest4.c:" >> unittestresults.out
 	cardtest4.c dominion.o rngs.o
-	gcc -o cardtest1 -g  cardtest4.c dominion.o rngs.o $(CFLAGS)
+	gcc -o cardtest4 -g  cardtest4.c dominion.o rngs.o $(CFLAGS)
 	gcov dominion.c >> unittestresults.out
 	
 player: player.c interface.o
