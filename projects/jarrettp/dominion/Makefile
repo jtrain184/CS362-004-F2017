@@ -41,6 +41,19 @@ unittestresults.out: cardtest4.c dominion.c
 	gcc -o cardtest1 -g  cardtest1.c dominion.o rngs.o $(CFLAGS)
 	./cardtest1  >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
+
+	echo "Result for running village tests:" >> unittestresults.out
+	echo "cardtest2.c:" >> unittestresults.out
+	gcc -o cardtest2 -g  cardtest2.c dominion.o rngs.o $(CFLAGS)
+	./cardtest2  >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+
+	echo "Result for running Great Hall tests:" >> unittestresults.out
+	echo "cardtest3.c:" >> unittestresults.out
+	gcc -o cardtest3 -g  cardtest3.c dominion.o rngs.o $(CFLAGS)
+	./cardtest3  >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+
 	
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
