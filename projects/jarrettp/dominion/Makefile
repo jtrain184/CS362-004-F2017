@@ -30,10 +30,16 @@ runtests: testDrawCard
 	cat dominion.c.gcov >> unittestresult.out
 
 unittestresults.out: cardtest4.c dominion.c
-	echo "Result for running card4 tests:" > unittestresults.out
+	echo "Result for running smithy tests:" > unittestresults.out
 	echo "cardtest4.c:" >> unittestresults.out
 	gcc -o cardtest4 -g  cardtest4.c dominion.o rngs.o $(CFLAGS)
 	./cardtest4  >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+
+	echo "Result for running adventurer tests:" > unittestresults.out
+	echo "cardtest1.c:" >> unittestresults.out
+	gcc -o cardtest1 -g  cardtest1.c dominion.o rngs.o $(CFLAGS)
+	./cardtest1  >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
 	
 player: player.c interface.o
