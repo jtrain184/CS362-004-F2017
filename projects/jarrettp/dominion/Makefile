@@ -33,6 +33,7 @@ unittestresults.out: cardtest4.c dominion.c
 	echo "Result for running card4 tests:" > unittestresults.out
 	echo "cardtest4.c:" >> unittestresults.out
 	gcc -o cardtest4 -g  cardtest4.c dominion.o rngs.o $(CFLAGS)
+	./cardtest4  >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
 	
 player: player.c interface.o
