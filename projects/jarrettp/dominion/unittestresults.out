@@ -1,4 +1,4 @@
-Result for running card4 tests:
+Result for running smithy tests:
 cardtest4.c:
 ----------------- Testing Card: smithy ----------------
 TEST 1: choice1 = 1 = +2 cards
@@ -9,6 +9,20 @@ coins = 8, expected = 4
  >>>>> SUCCESS: Testing complete smithy <<<<<
 
 File 'dominion.c'
-Lines executed:26.07% of 560
+Lines executed:31.25% of 560
+Creating 'dominion.c.gcov'
+
+Result for running adventurer tests:
+cardtest1.c:
+----------------- Testing Card: adventurer ----------------
+TEST 1: choice1 = 1 = +2 cards
+hand count = 9, expected = 7
+deck count = 0, expected = 2
+coins = 4, expected = 4
+
+ >>>>> SUCCESS: Testing complete adventurer <<<<<
+
+File 'dominion.c'
+Lines executed:31.25% of 560
 Creating 'dominion.c.gcov'
 

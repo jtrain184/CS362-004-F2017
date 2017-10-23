@@ -44,7 +44,7 @@ int main() {
 	printf("----------------- Testing Card: %s ----------------\n", TESTCARD);
 
 	// ----------- TEST 1: choice1 = 1 = +3 cards --------------
-	printf("TEST 1: choice1 = 1 = +2 cards\n");
+	printf("TEST 1: Adventurer card effects\n");
 
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
