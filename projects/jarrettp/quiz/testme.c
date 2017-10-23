@@ -14,14 +14,14 @@ char *inputString()
 {
 	char s[6];
     // TODO: rewrite this function
-	static const char alphanum[] = "seRartT";
-
-	for (int i = 0; i < 5; ++i) {
+	static const char alphanum[] = "seRartTubcdE";
+        int i = 0;
+	for (i = 0; i < 5; ++i) {
 		s[i] = alphanum[rand() % (sizeof(alphanum) - 1)];
 	}
 
 	s[5] ='\0';
-    return "reset";
+    return s;
 }
 
 void testme()
