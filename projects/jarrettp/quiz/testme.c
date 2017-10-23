@@ -7,7 +7,7 @@
 char inputChar()
 {
     // TODO: rewrite this function
-    return (unsigned char) (rand() % 255 + 1);;
+    return (unsigned char) (rand() % 255 + 1);
 }
 
 char *inputString()
