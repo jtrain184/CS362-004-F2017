@@ -30,9 +30,8 @@ runtests: testDrawCard
 	cat dominion.c.gcov >> unittestresult.out
 
 unittestresults.out: cardtest4.c dominion.c
-	echo "Result for running BST tests:" > unittestresults.out
+	echo "Result for running card4 tests:" > unittestresults.out
 	echo "cardtest4.c:" >> unittestresults.out
-	cardtest4.c dominion.o rngs.o
 	gcc -o cardtest4 -g  cardtest4.c dominion.o rngs.o $(CFLAGS)
 	gcov dominion.c >> unittestresults.out
 	
