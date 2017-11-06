@@ -54,10 +54,11 @@ unittestresults.out: cardtest4.c dominion.c
 	./cardtest3  >> unittestresults.out
 	gcov -b dominion.c >> unittestresults.out
 
-	randomtestadventurer: randomtestadventurer.c dominion.o
-	gcc -o randomtestadventure -g randomtestadventure.c dominion.o rngs.o $(CFLAGS)
-	./randomtestadventure
-	gcov -b randomtestadventure.c
+	randomtestadventurer: 
+	gcc -o randomtestadventurer -g  randomtestadventurer.c dominion.o rngs.o $(CFLAGS)
+	./randomtestadventurer &> randomtestadventurer.out
+	gcov -b dominion.c >> randomtestadventurer.out
+	cat dominion.c.gcov >> randomtestadventurer.out
 
 	
 player: player.c interface.o
