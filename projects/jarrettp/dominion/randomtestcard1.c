@@ -7,10 +7,7 @@
 #include <time.h>
 #include "rngs.h"
 
-
-
 #define DEBUG 0
-#define NOISY_TEST 1
 
 int smithyCard(struct gameState *state, int *currentPlayer, int *handPos);
 
