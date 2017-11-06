@@ -54,12 +54,13 @@ unittestresults.out: cardtest4.c dominion.c
 	./cardtest3  >> unittestresults.out
 	gcov -b dominion.c >> unittestresults.out
 
-	randomtestadventurer: 
-	gcc -o randomtestadventurer -g  randomtestadventurer.c dominion.o rngs.o $(CFLAGS)
-	./randomtestadventurer &> randomtestadventurer.out
-	gcov -b dominion.c >> randomtestadventurer.out
-	cat dominion.c.gcov >> randomtestadventurer.out
+adventurer:
+	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.c randomtestadventurer.c rngs.c -o randomtestadventurer -lm -g
 
+runAdventurer: adventurer
+	./randomtestadventurer &> randomtestadventurer.out
+	gcov dominion.c >> randomtestadventurer.out
+	cat dominion.c.gcov >> randomtestadventurer.out
 	
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
