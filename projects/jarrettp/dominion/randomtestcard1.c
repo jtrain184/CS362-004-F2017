@@ -9,7 +9,6 @@
 
 #define DEBUG 0
 
-int smithyCard(struct gameState *state, int *currentPlayer, int *handPos);
 
 int random_number(int min_num, int max_num){
     int result=0,low_num=0,hi_num=0;
@@ -35,10 +34,7 @@ int main(int argc, char const *argv[]){
 	int myCard;
 
 	//smithycard specific variables
-	int currentplayer;
-	int handPos = -1;
-	int cardsInHand;
-
+	int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
 
 
 	for (i = 0; i < random_number(0, 100); i ++){ //Loops a random number of times <100
@@ -47,13 +43,13 @@ int main(int argc, char const *argv[]){
 
 		for (j = 0; j < 10000; j++){ // run 10000 times with random variables in this game state
 			currentplayer = game.whoseTurn;
+			cardsInHand = game.handCount[currentplayer];  //before smithy effect
+			cardEffect(smithy, choice1, choice2, choice3, &game, handpos, &bonus);
+			
 
-			cardsInHand = game.handCount[currentplayer];
-
-			if(myCard = smithyCard(&game, &currentplayer, &handPos) != 0)
-				printf("Error: smithyCard returned something other than 0. Random Game[%d] iteration[%d]\n", i, j);
-			if (cardsInHand <= game.handCount[currentplayer])
-				//printf("Error: player did not pick up enough cards. Random Game[%d] iteration[%d]\n", i, j);
+			if(game.handCount[currentplayer]  != cardsInHand + 3)  //Did we draw three cards?
+				printf("Error: smithyCard did not return card hand increased by 3. Random Game[%d] iteration[%d]\n", i, j);
+			    
 			
 			game.outpostPlayed = 0;
   			game.phase = 0;
