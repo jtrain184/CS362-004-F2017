@@ -62,10 +62,10 @@ runAdventurer: adventurer
 	gcov dominion.c >> randomtestadventurer.out
 	cat dominion.c.gcov >> randomtestadventurer.out
 
-randomtestcard: randomtestcard1.c dominion.o
+randomtestcard1: randomtestcard1.c dominion.o
 	gcc -o randomtestcard1 -g randomtestcard1.c dominion.o rngs.o $(CFLAGS)
 	./randomtestcard1
-	gcov -b randomtestcard1.c
+	gcov -f dominion.c
 
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)

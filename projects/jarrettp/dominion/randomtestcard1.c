@@ -32,6 +32,8 @@ int main(int argc, char const *argv[]){
 	int i, j;
 	int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse, sea_hag, tribute, smithy};
 	int myCard;
+	int currentplayer = 0;
+	int cardsInHand = 0;	
 
 	//smithycard specific variables
 	int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
