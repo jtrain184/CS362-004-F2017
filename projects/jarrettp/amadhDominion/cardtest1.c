@@ -31,7 +31,7 @@ int main() {
     int i, j, m;
     int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
     int remove1, remove2;
-    int seed = 19;
+    int seed = 40000;
     int numPlayers = 2;
     int thisPlayer = 0;
 	struct gameState G, testG;
@@ -44,7 +44,7 @@ int main() {
 	printf("----------------- Testing Card: %s ----------------\n", TESTCARD);
 
 	// ----------- TEST 1: Add two cards (should be treasure) --------------
-	printf("TEST 1: Adventurer card effects\n");
+	printf("TEST 1: Adventurer card draw (expect 2 new cards)\n");
 
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
@@ -54,6 +54,12 @@ int main() {
 	printf("hand count = %d, expected = %d\n", testG.handCount[thisPlayer], G.handCount[thisPlayer] + newCards - discarded);
 	printf("deck count = %d, expected = %d\n", testG.deckCount[thisPlayer], G.deckCount[thisPlayer] - newCards + shuffledCards);
 	printf("coins = %d, expected = %d\n", testG.coins, G.coins + xtraCoins);
+
+		// ----------- TEST 2: Add two cards (should be treasure) --------------
+	printf("TEST 2: Adventurer card effect - expect to see two new treasure cards\n");
+    printf("Hand before adventurer: %d, %d, %d, %d, %d, %d, %d\n",G.hand[0][0], G.hand[0][1], G.hand[0][2], G.hand[0][3], G.hand[0][4], G.hand[0][5], G.hand[0][6]);
+    printf("Look for an additional two treasure cards of any combination.(Copper = 4, silver = 5, gold = 6.)\n");
+    printf("Hand after adventurer: %d, %d, %d, %d, %d, %d, %d\n",testG.hand[0][0], testG.hand[0][1], testG.hand[0][2], testG.hand[0][3], testG.hand[0][4], testG.hand[0][5], testG.hand[0][6]);
 
 
 	printf("\n >>>>> SUCCESS: Testing complete %s <<<<<\n\n", TESTCARD);
