@@ -48,10 +48,12 @@ int main(int argc, char const *argv[]){
 			cardsInHand = game.handCount[currentplayer];  //before smithy effect
 			cardEffect(adventurer, choice1, choice2, choice3, &game, handpos, &bonus);
 			
-
-			if(game.handCount[currentplayer]  != cardsInHand + 2)  //Did we draw two treasure cards?
+			if(game.handCount[currentplayer]  != cardsInHand + 2) { //Did we draw two  cards? Initial hand was 5 and we should now have 7.
 				printf("Error: adventurer did not return 2 treasure cards. Random Game[%d] iteration[%d]\n", i, j);
-			    
+				printf("hand count = %d, expected = %d\n", game.handCount[currentplayer], cardsInHand + 2);
+                printf("Look for an additional two treasure cards of any combination.(Copper = 4, silver = 5, gold = 6.)\n");
+                printf("Hand after adventurer: %d, %d, %d, %d, %d, %d, %d\n",game.hand[0][0], game.hand[0][1], game.hand[0][2], game.hand[0][3], game.hand[0][4], game.hand[0][5], game.hand[0][6]);
+			};
 			
 			game.outpostPlayed = 0;
   			game.phase = 0;
