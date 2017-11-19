@@ -23,7 +23,7 @@
 #define TESTCARD "adventurer"
 
 int main() {
-    int newCards = 0;
+    int newCards = 2;
     int discarded = 1;
     int xtraCoins = 0;
     int shuffledCards = 0;
