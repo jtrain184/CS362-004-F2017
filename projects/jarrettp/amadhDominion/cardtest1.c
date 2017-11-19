@@ -43,7 +43,7 @@ int main() {
 
 	printf("----------------- Testing Card: %s ----------------\n", TESTCARD);
 
-	// ----------- TEST 1: choice1 = 1 = +3 cards --------------
+	// ----------- TEST 1: Add two cards (should be treasure) --------------
 	printf("TEST 1: Adventurer card effects\n");
 
 	// copy the game state to a test case
