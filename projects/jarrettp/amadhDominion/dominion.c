@@ -734,13 +734,13 @@ int play_adventurer(int drawntreasure, struct gameState *state, int currentPlaye
         else
         {
             temphand[z]=cardDrawn;
-            state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
+            //state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
             z++;
         }
     }
     while(z-1>=0)
     {
-        //state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
+        state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
         z=z-1;
     }
     return 0;
