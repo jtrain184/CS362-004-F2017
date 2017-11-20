@@ -41,7 +41,21 @@ public class UrlValidatorTest extends TestCase {
    public void testManualTest()
    {
 	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+<<<<<<< Updated upstream
 	   System.out.println(urlVal.isValid("http://www.amazon.com"));
+=======
+	   assertTrue(urlVal.isValid("http://www.google.com/"));
+	   assertFalse(urlVal.isValid("http:///"));
+	   assertFalse(urlVal.isValid("http://"));
+	   System.out.println(urlVal.isValid("http://www..com"));
+	   assertFalse(urlVal.isValid("http:/\\"));
+	   assertFalse(urlVal.isValid("http:/\baad.com"));
+	   assertFalse(urlVal.isValid("http:/\\"));
+	   assertTrue(urlVal.isValid("ftp://www.google.com/"));
+	   assertTrue(urlVal.isValid("http://www.google.com:5000/test"));
+	   assertTrue(urlVal.isValid("http://www.google.com:5000/?"));
+
+>>>>>>> Stashed changes
 	   
 	   
    }
