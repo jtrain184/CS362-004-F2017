@@ -41,8 +41,13 @@ public class UrlValidatorTest extends TestCase {
    public void testManualTest()
    {
 	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
-	   System.out.println(urlVal.isValid("http://www.amazon.com"));
-	   
+	   System.out.println("Test:  http://www.amazon.com Expected : true " + ", Actual : " + urlVal.isValid("http://www.amazon.com"));
+	   System.out.println("Test:  http://www..com Expected : false " + ", Actual : " + urlVal.isValid("http://www..com"));
+	   System.out.println("Test:  http:// Expected : false " + ", Actual : " + urlVal.isValid("http://"));
+	   System.out.println("Test:  http://www.amazon.com:3000 Expected : true " + ", Actual : " + urlVal.isValid("http://www.amazon.com:3000"));
+	   System.out.println("Test:  http://www.amazon.com:80 Expected : true " + ", Actual : " + urlVal.isValid("http://www.amazon.com:80"));
+	   System.out.println("Test:  http://www.amazon.com Expected : true " + ", Actual : " + urlVal.isValid("http://www.amazon.com"));
+	   System.out.println("Test:  http://www.amazon.com Expected : true " + ", Actual : " + urlVal.isValid("http://www.amazon.com"));
 	   
    }
    
