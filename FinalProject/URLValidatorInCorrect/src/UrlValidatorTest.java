@@ -52,13 +52,38 @@ public class UrlValidatorTest extends TestCase {
    }
    
    
-   public void testYourFirstPartition()
+   public void testSchemePartition()
    {
+	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+	   //known valid authority
+	   String validAuthority = "www.amazon.com";
+	   //schemes to test
+	   String[] schemeTest = {"http://", "https://", "http:///", "http:://", "ftp://", "fttp://", "https", "http", "hello"};
+	   //corresponds to the above scheme
+	   Boolean[] valid = {true, true, false, false, true, false, false, false, false};
+	
+	   System.out.println("Testing URL schemes:");
+	   for (int i = 0; i < 9; i++) {
+		   String testing = schemeTest[i] + validAuthority;
+		   Boolean expectedVal = valid[i];
+		   System.out.println(testing+ "\t" + " Expected:"+ expectedVal + "\t" + " Actual:" + urlVal.isValid(testing));
+	   }
+	   System.out.println("End URL schemes test.");
 	   
    }
    
-   public void testYourSecondPartition(){
-	   
+   public void testAuthorityPartition(){
+	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+	   String validScheme = "https://";
+	   String[] authorityTest = {"www.amazon.com", "www.amazon.co", "www.amazon", "www.amazon.gov",
+			   					"www.amazon.", "amazon.com", "amazon.mil", "255.255.255.255", "256.255.255.255", "300.300.300.300",
+			   					"255"};
+	   Boolean[] valid = {true, true, false, true, false, true, true, true, false, false, false};
+	   for (int i = 0; i < 11 ; i++) {
+		   String testing = validScheme + authorityTest[i];
+		   Boolean expectedVal = valid[i];
+		   System.out.println(testing+ "\t" + " Expected:"+ expectedVal + "\t" + " Actual:" + urlVal.isValid(testing));
+	   }
    }
    
    
