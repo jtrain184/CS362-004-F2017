@@ -16,6 +16,8 @@
  */
 
 
+import java.util.Date;
+import java.util.Random;
 import junit.framework.TestCase;
 
 
@@ -96,36 +98,59 @@ public class UrlValidatorTest extends TestCase {
    public void testIsValidRandom(){
        UrlValidator urlVal = new UrlValidator(null, null, (UrlValidator.ALLOW_ALL_SCHEMES + UrlValidator.ALLOW_LOCAL_URLS));
 
-    //builds a valid url from the scheme, authority and optional port, and path
+       // To seed random mumber generator
        
-       for(int i = 0; i < testUrlScheme.length; i++) {
-           for(int j = 0; j < testAuthorityAndPort.length; j++) {
-               for(int k = 0; k < testPath.length; k++) {
-
-                       boolean expected = testUrlScheme[i].valid &&
-                    		   testAuthorityAndPort[j].valid &&
-                               testPath[k].valid;
-
-                       String testUrl = new StringBuilder(255).append(testUrlScheme[i].item)
-                               .append(testAuthorityAndPort[j].item)
-                               .append(testPath[k].item)
-                               .toString();
-      
-                       // Actual result
-                       boolean actual = urlVal.isValid(testUrl);
-
-                       if(actual !=expected) {
-                           System.out.println("Failed: " + testUrl + "    Actual Result: " + actual);
-                           System.out.println("    expected result: " + expected);
-                           assertEquals(expected, actual);
-                       }
-                       else {
-                           assertEquals(expected, actual);
-                       }
-
-               } // end of path builder loop
-          } // end of authority/port builder loop
-      } //end of scheme builder loop
-   } // end of testIsValid function
-
+    
+       
+      //Outer loop for re-running random with new seed
+      for(int r= 0; r < 100; r++) {
+    	  long seed= System.currentTimeMillis();
+	      // Seed randomInt with new seed based on system clock
+	      Random randomInt = new Random(seed);
+	       
+	       
+	     //builds a valid url from the scheme, authority and optional port, and path 
+	       for(int i = 0; i < testUrlScheme.length; i++) {
+	    	   // Random index for Scheme
+	    	   int schemeIndex = randomInt.nextInt(testUrlScheme.length);
+	    	   
+	           for(int j = 0; j < testAuthorityAndPort.length; j++) {
+	        	   // Random index for Authority and Port
+	        	   int authIndex = randomInt.nextInt(testAuthorityAndPort.length);
+	        	   
+	        	   
+	               for(int k = 0; k < testPath.length; k++) {
+	            	// Random index for Path
+	            	int pathIndex = randomInt.nextInt(testPath.length);
+	
+	                       boolean expected = testUrlScheme[schemeIndex].valid &&
+	                    		   testAuthorityAndPort[authIndex].valid &&
+	                               testPath[pathIndex].valid;
+	
+	                       String testUrl = new StringBuilder(255).append(testUrlScheme[schemeIndex].item)
+	                               .append(testAuthorityAndPort[authIndex].item)
+	                               .append(testPath[pathIndex].item)
+	                               .toString();
+	      
+	                       // Actual result
+	                       boolean actual = urlVal.isValid(testUrl);
+	                       
+	                       if(actual !=expected) {
+	                           System.out.println("Failed: " + testUrl + "    Actual Result: " + actual);
+	                           System.out.println("    expected result: " + expected);
+	                           assertEquals(expected, actual);
+	                           
+	                           System.out.println(testUrl);
+	                       }
+	                       else {
+	                           assertEquals(expected, actual);
+	                    	   
+	                    	   System.out.println(testUrl);
+	                       }
+	
+	               } // end of path builder loop
+	          } // end of authority/port builder loop
+	      } //end of scheme builder loop
+      }// end of random seed loop
+    } // end of testIsValidRandom function
 }
