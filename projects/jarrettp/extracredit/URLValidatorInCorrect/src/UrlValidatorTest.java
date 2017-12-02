@@ -19,9 +19,6 @@
 import junit.framework.TestCase;
 
 
-
-
-
 /**
  * Performs Validation Test for url validations.
  *
@@ -36,6 +33,7 @@ public class UrlValidatorTest extends TestCase {
       super(testName);
    }
 
+   
  // Create expected results pairs for tests from partition inputs above and others
 
  //  Array of expected scheme results
@@ -95,7 +93,7 @@ public class UrlValidatorTest extends TestCase {
    };
 
 
-   public void testIsValid(){
+   public void testIsValidRandom(){
        UrlValidator urlVal = new UrlValidator(null, null, (UrlValidator.ALLOW_ALL_SCHEMES + UrlValidator.ALLOW_LOCAL_URLS));
 
     //builds a valid url from the scheme, authority and optional port, and path
