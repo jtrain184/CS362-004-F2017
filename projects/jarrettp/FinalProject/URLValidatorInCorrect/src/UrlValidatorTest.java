@@ -41,6 +41,7 @@ public class UrlValidatorTest extends TestCase {
    public void testManualTest()
    {
 	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+<<<<<<< HEAD
 	   System.out.println(urlVal.isValid("http://www.amazon.com"));
 
 	   assertTrue(urlVal.isValid("http://www.google.com/"));
@@ -54,6 +55,11 @@ public class UrlValidatorTest extends TestCase {
 	   assertTrue(urlVal.isValid("http://www.google.com:5000/test"));
 	   assertTrue(urlVal.isValid("http://www.google.com:5000/?"));
   
+=======
+	   System.out.println(urlVal.isValid("http://www..com"));
+	   
+	   
+>>>>>>> master
    }
    
    

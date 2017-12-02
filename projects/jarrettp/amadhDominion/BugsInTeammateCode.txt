@@ -1,0 +1,19 @@
+Bug Name:  Adventurer segmentation fault
+
+Bug Description:  The adventurer card exhibits strange behavior due to the way variables are
+passed to it, particuraly the cardDrawn variable.  Because cardDrawn is within the card effect
+function and then passed into the nested play_adventurer function, some very odd behaviors happens
+within the two 
+
+The card seems to perform well on the first iteration of the while loop to draw treasure and breaks
+out of the loop correctly.  Subsequent loops give unpredictable results but when random testing is used
+over a large number of iterations, the card will eventually produce a segfault (filling the player hand
+with a nonseical value and running out of memory).
+
+
+Bug Name:  Adventurer "discard" bug
+Description: When a non-treasure card is drawn, it is added to the temp hand, but the last card drawn is not
+removed (using state->handCount[currentPlayer]--).  Thus the player hand keeps getting filled and leads to 
+unexpected results.   The bug above overshadows this behavior but both of these should be addressed.
+
+
